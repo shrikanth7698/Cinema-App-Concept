@@ -82,7 +82,7 @@ public class HomeActivity extends AppCompatActivity {
         snapHelper = new PagerSnapHelper();
         snapHelper.attachToRecyclerView(moviesRV);
         moviesRV.setLayoutManager(layoutManager);
-        moviesRV.addItemDecoration(new LinePagerIndicatorDecoration());
+        moviesRV.addItemDecoration(new LinePagerIndicatorDecoration(HomeActivity.this));
         moviesRV.setAdapter(movieAdapter);
         backdropIV = findViewById(R.id.backdropIV);
         MiddleItemFinder.MiddleItemCallback callback =

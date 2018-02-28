@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+
+    android:layout_height="match_parent"
+    tools:context="com.shrikanthravi.cinemaappconcept.MovieDetailsActivity">
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:id="@+id/backdropIV"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/transparent_white_percent_80"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="50dp"
+            android:layout_gravity="top|center"
+            android:minHeight="200dp"
+            android:id="@+id/picturesRV"></android.support.v7.widget.RecyclerView>
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:transitionName="descCard"
+            android:layout_below="@id/picturesRV"
+            android:layout_marginBottom="10dp"
+            app:cardElevation="15dp"
+            app:cardCornerRadius="10dp"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:animateLayoutChanges="true"
+                android:padding="10dp"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:layout_weight="1"
+                        android:layout_marginRight="4dp"
+                        android:transitionName="movieName"
+                        android:id="@+id/movieNameTV"
+                        android:maxLines="2"
+                        android:ellipsize="end"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="30sp"/>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="2D"
+                            android:id="@+id/typeTV"
+                            android:transitionName="type"
+                            android:textSize="18sp"
+                            android:layout_margin="8dp"
+                            android:textColor="@android:color/tab_indicator_text"
+                            />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:transitionName="rating"
+                            android:text="IMDB 8.3"
+                            android:textSize="18sp"
+                            android:layout_margin="8dp"
+                            android:id="@+id/ratingTV"
+                            android:textColor="@android:color/black"
+                            />
+
+                    </LinearLayout>
+                </LinearLayout>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:id="@+id/genreTV"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginTop="4dp"
+                    android:transitionName="movieGenre"
+                    android:layout_marginBottom="4dp"
+                    android:textColor="@android:color/black" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/sessionLL"
+                    android:visibility="gone"
+                    android:orientation="horizontal">
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_margin="8dp"
+                        android:textColor="@android:color/white"
+                        android:text="Session Times"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:background="@drawable/rounded_corners"
+                        android:textAllCaps="false"/>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_weight="1"/>
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/share_icon"
+                        android:layout_gravity="center"
+                        android:tint="@color/colorPrimary"/>
+                </LinearLayout>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:maxLines="7"
+                    android:lines="7"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginTop="8dp"
+                    android:transitionName="description"
+                    android:layout_marginBottom="8dp"
+                    android:ellipsize="end"
+                    android:id="@+id/descriptionTV"
+                    android:textColor="@android:color/tab_indicator_text"/>
+
+
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+        </RelativeLayout>
+    </ScrollView>
+
+</RelativeLayout>

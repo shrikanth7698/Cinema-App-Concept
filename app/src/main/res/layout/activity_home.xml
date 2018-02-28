@@ -16,22 +16,17 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/transparent_white_percent_60"/>
-    <com.wonderkiln.blurkit.BlurLayout
-        android:id="@+id/blurLayout"
-        app:downscaleFactor="0.12"
-        app:fps="10"
-        app:blurRadius="12"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:background="@color/transparent_white_percent_80"/>
+
 
         <android.support.v7.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:layout_gravity="center"
+            android:layout_centerVertical="true"
             android:layout_marginBottom="20dp"
             android:id="@+id/moviesRV"></android.support.v7.widget.RecyclerView>
-    </com.wonderkiln.blurkit.BlurLayout>
+
 
 </RelativeLayout>

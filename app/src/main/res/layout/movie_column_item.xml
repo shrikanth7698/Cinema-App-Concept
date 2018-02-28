@@ -7,8 +7,10 @@
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="35dp"
-        android:layout_marginRight="35dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:transitionName="movieCard"
+        android:id="@+id/moviePosterCard"
         android:layout_marginTop="40dp"
         app:cardCornerRadius="8dp"
         app:cardElevation="20dp"
@@ -17,14 +19,18 @@
             android:layout_width="match_parent"
             android:layout_height="225dp"
             android:scaleType="centerCrop"
+            android:transitionName="moviePoster"
             android:id="@+id/moviePosterIV"/>
     </android.support.v7.widget.CardView>
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+
         android:layout_marginLeft="40dp"
         android:layout_marginRight="40dp"
         android:layout_marginBottom="20dp"
+        android:id="@+id/movieDetailCard"
+        android:transitionName="descCard"
         app:cardElevation="10dp"
         app:cardCornerRadius="10dp"
         android:layout_marginTop="-10dp"
@@ -33,6 +39,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
+            android:padding="10dp"
             android:orientation="vertical">
             <LinearLayout
                 android:layout_width="match_parent"
@@ -44,6 +51,7 @@
                     android:layout_marginLeft="8dp"
                     android:layout_weight="1"
                     android:layout_marginRight="4dp"
+                    android:transitionName="movieName"
                     android:id="@+id/movieNameTV"
                     android:maxLines="2"
                     android:ellipsize="end"
@@ -58,6 +66,7 @@
                         android:layout_height="wrap_content"
                         android:text="2D"
                         android:id="@+id/typeTV"
+                        android:transitionName="type"
                         android:textSize="18sp"
                         android:layout_margin="8dp"
                         android:textColor="@android:color/tab_indicator_text"
@@ -68,6 +77,7 @@
                         android:text="IMDB 8.3"
                         android:textSize="18sp"
                         android:layout_margin="8dp"
+                        android:transitionName="rating"
                         android:id="@+id/ratingTV"
                         android:textColor="@android:color/black"
                         />
@@ -80,6 +90,7 @@
                 android:layout_marginLeft="8dp"
                 android:id="@+id/genreTV"
                 android:layout_marginRight="8dp"
+                android:transitionName="movieGenre"
                 android:layout_marginTop="4dp"
                 android:layout_marginBottom="4dp"
                 android:textColor="@android:color/black" />
@@ -92,6 +103,7 @@
                 android:layout_marginRight="8dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
+                android:transitionName="description"
                 android:ellipsize="end"
                 android:id="@+id/descriptionTV"
                 android:textColor="@android:color/tab_indicator_text"/>

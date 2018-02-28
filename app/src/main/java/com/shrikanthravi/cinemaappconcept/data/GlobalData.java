@@ -17,4 +17,5 @@ public class GlobalData {
             "Brilliant parapsychologist Elise Rainier receives a disturbing phone call from a man who claims that his house is haunted. Even more disturbing is the address -- 413 Apple Tree Lane in Five Keys, N.M. -- the home where Elise grew up as a child. Accompanied by her two investigative partners, Rainier travels to Five Keys to confront and destroy her greatest fear -- the demon that she accidentally set free years earlier."};
 
     public static String[] posters = new String[]{"file:///android_asset/black_panther.jpeg","file:///android_asset/blade_runner.jpg","file:///android_asset/insidious.jpg"};
+    public static String[] videos = new String[]{"black.mp4","blade.mp4","insidious.mp4"};
 }

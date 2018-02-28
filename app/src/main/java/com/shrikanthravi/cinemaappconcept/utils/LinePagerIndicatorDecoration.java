@@ -1,5 +1,6 @@
 package com.shrikanthravi.cinemaappconcept.utils;
 
+import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Canvas;
 import android.graphics.Paint;
@@ -10,14 +11,17 @@ import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.Interpolator;
 
+import com.shrikanthravi.cinemaappconcept.R;
+
 /**
  * Created by shrikanthravi on 28/02/18.
  */
 
 public class LinePagerIndicatorDecoration extends RecyclerView.ItemDecoration {
 
-    private int colorActive = 0xFFFFFFFF;
-    private int colorInactive = 0x66FFFFFF;
+    private int colorActive = R.color.colorPrimary;
+    private int colorInactive = R.color.transparent_black_hex_5;
+    private Context context;
 
     private static final float DP = Resources.getSystem().getDisplayMetrics().density;
 
@@ -47,7 +51,8 @@ public class LinePagerIndicatorDecoration extends RecyclerView.ItemDecoration {
 
     private final Paint mPaint = new Paint();
 
-    public LinePagerIndicatorDecoration() {
+    public LinePagerIndicatorDecoration(Context context) {
+        this.context = context;
         mPaint.setStrokeCap(Paint.Cap.ROUND);
         mPaint.setStrokeWidth(mIndicatorStrokeWidth);
         mPaint.setStyle(Paint.Style.STROKE);
@@ -93,7 +98,7 @@ public class LinePagerIndicatorDecoration extends RecyclerView.ItemDecoration {
     }
 
     private void drawInactiveIndicators(Canvas c, float indicatorStartX, float indicatorPosY, int itemCount) {
-        mPaint.setColor(colorInactive);
+        mPaint.setColor(context.getResources().getColor(colorInactive));
 
         // width of item indicator including padding
         final float itemWidth = mIndicatorItemLength + mIndicatorItemPadding;
@@ -108,7 +113,7 @@ public class LinePagerIndicatorDecoration extends RecyclerView.ItemDecoration {
 
     private void drawHighlights(Canvas c, float indicatorStartX, float indicatorPosY,
                                 int highlightPosition, float progress, int itemCount) {
-        mPaint.setColor(colorActive);
+        mPaint.setColor(context.getResources().getColor(colorActive));
 
         // width of item indicator including padding
         final float itemWidth = mIndicatorItemLength + mIndicatorItemPadding;
