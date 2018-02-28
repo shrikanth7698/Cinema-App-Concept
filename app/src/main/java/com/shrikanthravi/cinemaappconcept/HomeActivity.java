@@ -24,6 +24,7 @@ import com.shrikanthravi.cinemaappconcept.utils.FontChanger;
 
 import com.shrikanthravi.cinemaappconcept.utils.LinePagerIndicatorDecoration;
 import com.shrikanthravi.cinemaappconcept.utils.MiddleItemFinder;
+
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -48,6 +49,7 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getSupportActionBar().hide();
+
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_home);
         init();
@@ -71,6 +73,7 @@ public class HomeActivity extends AppCompatActivity {
     public void init(){
 
         //Changing the font throughout the activity
+
         regular = Typeface.createFromAsset(getAssets(), "fonts/product_san_regular.ttf");
         bold = Typeface.createFromAsset(getAssets(),"fonts/product_sans_bold.ttf");
         regularFontChanger = new FontChanger(regular);
@@ -84,6 +87,7 @@ public class HomeActivity extends AppCompatActivity {
         moviesRV.setLayoutManager(layoutManager);
         moviesRV.addItemDecoration(new LinePagerIndicatorDecoration(HomeActivity.this));
         moviesRV.setAdapter(movieAdapter);
+
         backdropIV = findViewById(R.id.backdropIV);
         MiddleItemFinder.MiddleItemCallback callback =
                 new MiddleItemFinder.MiddleItemCallback() {

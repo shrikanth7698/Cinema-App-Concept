@@ -92,13 +92,9 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MyViewHolder
 
                 Pair<View, String>[] transitionPairs = new Pair[2];
 
-                //transitionPairs[0] = Pair.create((View)holder.ratingTV,holder.ratingTV.getTransitionName());
-                //transitionPairs[1] = Pair.create((View)holder.typeTV,holder.typeTV.getTransitionName());
-                //transitionPairs[2] = Pair.create((View)holder.movieNameTV,holder.movieNameTV.getTransitionName());
-                //transitionPairs[3] = Pair.create((View)holder.genreTV,holder.genreTV.getTransitionName());
-                //transitionPairs[4] = Pair.create((View)holder.descTV,holder.descTV.getTransitionName());
-                transitionPairs[0] = Pair.create((View)holder.movieDetailsCV,holder.movieDetailsCV.getTransitionName());
-                transitionPairs[1] = Pair.create((View)holder.moviePosterCardCV,holder.moviePosterCardCV.getTransitionName());
+
+                transitionPairs[0] = Pair.create((View)holder.moviePosterCardCV,holder.moviePosterCardCV.getTransitionName());
+                transitionPairs[1] = Pair.create((View)holder.movieDetailsCV,holder.movieDetailsCV.getTransitionName());
 
                 ActivityOptionsCompat options = ActivityOptionsCompat.
                         makeSceneTransitionAnimation((Activity) context, transitionPairs);
@@ -114,13 +110,9 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MyViewHolder
 
                 Pair<View, String>[] transitionPairs = new Pair[2];
 
-                //transitionPairs[0] = Pair.create((View)holder.ratingTV,holder.ratingTV.getTransitionName());
-                //transitionPairs[1] = Pair.create((View)holder.typeTV,holder.typeTV.getTransitionName());
-                //transitionPairs[2] = Pair.create((View)holder.movieNameTV,holder.movieNameTV.getTransitionName());
-                //transitionPairs[3] = Pair.create((View)holder.genreTV,holder.genreTV.getTransitionName());
-                //transitionPairs[4] = Pair.create((View)holder.descTV,holder.descTV.getTransitionName());
-                transitionPairs[0] = Pair.create((View)holder.movieDetailsCV,holder.movieDetailsCV.getTransitionName());
-                transitionPairs[1] = Pair.create((View)holder.moviePosterCardCV,holder.moviePosterCardCV.getTransitionName());
+                transitionPairs[0] = Pair.create((View)holder.moviePosterCardCV,holder.moviePosterCardCV.getTransitionName());
+                transitionPairs[1] = Pair.create((View)holder.movieDetailsCV,holder.movieDetailsCV.getTransitionName());
+
 
                 ActivityOptionsCompat options = ActivityOptionsCompat.
                         makeSceneTransitionAnimation((Activity) context, transitionPairs);

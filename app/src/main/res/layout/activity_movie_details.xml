@@ -117,6 +117,7 @@
                         android:layout_margin="8dp"
                         android:textColor="@android:color/white"
                         android:text="Session Times"
+                        android:id="@+id/sessionTimeBTN"
                         android:paddingLeft="10dp"
                         android:paddingRight="10dp"
                         android:background="@drawable/rounded_corners"

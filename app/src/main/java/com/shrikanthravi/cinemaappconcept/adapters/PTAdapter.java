@@ -36,6 +36,11 @@ public class PTAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private List<PTMovie> ptMovieList;
     Context context;
+    public static int currentProgress=0;
+
+    public int getCurrentProgress(){
+        return currentProgress;
+    }
 
     public class PictureViewHolder extends RecyclerView.ViewHolder {
 
@@ -103,7 +108,7 @@ public class PTAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     @Override
     public void onBindViewHolder(final RecyclerView.ViewHolder holder, final int position) {
 
-        holder.setIsRecyclable(false);
+
         PTMovie pt = ptMovieList.get(position);
 
 
@@ -114,11 +119,13 @@ public class PTAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         else{
             final VideoViewHolder holder1 = (VideoViewHolder) holder;
             final VideoPlayer videoPlayer = new VideoPlayer(context);
+
             RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.MATCH_PARENT);
             videoPlayer.setLayoutParams(params);
             videoPlayer.setScaleType(VideoPlayer.ScaleType.CENTER_CROP);
             holder1.videoLL.addView(videoPlayer);
             videoPlayer.loadVideo(pt.getUrl(),pt);
+            currentProgress = videoPlayer.getCurrentProgress();
         }
 
     }

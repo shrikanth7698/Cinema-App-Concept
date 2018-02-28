@@ -1,8 +1,12 @@
 package com.shrikanthravi.cinemaappconcept;
 
 import android.animation.Animator;
+import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Handler;
+import android.support.v4.app.ActivityOptionsCompat;
+import android.support.v4.util.Pair;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -15,6 +19,7 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -24,6 +29,7 @@ import com.shrikanthravi.cinemaappconcept.data.GlobalData;
 import com.shrikanthravi.cinemaappconcept.data.PTMovie;
 import com.shrikanthravi.cinemaappconcept.utils.FontChanger;
 import com.shrikanthravi.cinemaappconcept.utils.LinePagerIndicatorDecoration;
+import com.shrikanthravi.cinemaappconcept.utils.MiddleItemFinder;
 import com.shrikanthravi.cinemaappconcept.utils.TransitionHelper;
 import com.squareup.picasso.Picasso;
 
@@ -42,7 +48,9 @@ public class MovieDetailsActivity extends AppCompatActivity {
     PTAdapter ptAdapter;
     LinearLayoutManager layoutManager;
     SnapHelper snapHelper;
-
+    Button sessionTimeButton;
+    int currentPosition=0;
+    int pos;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -51,7 +59,7 @@ public class MovieDetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movie_details);
         init();
-        int pos=getIntent().getIntExtra("pos",0);
+        pos = getIntent().getIntExtra("pos",0);
         regularFontChanger.replaceFonts((ViewGroup)this.findViewById(android.R.id.content));
         movieNameTV.setText(GlobalData.movies[pos]);
         genreTV.setText(GlobalData.genres[pos]);
@@ -87,13 +95,47 @@ public class MovieDetailsActivity extends AppCompatActivity {
 
                     }
                 });
-                //subProfile is a linear layout
+
             }
-        },500);
+        },100);
+
+        sessionTimeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MovieDetailsActivity.this,SeatSelectionActivity.class);
+
+                Pair<View, String>[] transitionPairs = new Pair[1];
+
+
+
+                intent.putExtra("pos",pos);
+                intent.putExtra("pos1",ptMovieList.get(currentPosition).getType());
+                if(ptMovieList.get(currentPosition).getType().equals("Picture")) {
+                    transitionPairs[0] = Pair.create((View) layoutManager.findViewByPosition(currentPosition).findViewById(R.id.pictureCV), layoutManager.findViewByPosition(currentPosition).findViewById(R.id.pictureCV).getTransitionName());
+
+
+                    ActivityOptionsCompat options = ActivityOptionsCompat.
+                            makeSceneTransitionAnimation(MovieDetailsActivity.this, transitionPairs);
+
+                    startActivity(intent, options.toBundle());
+                }
+                else{
+                    intent.putExtra("currentPos",ptAdapter.getCurrentProgress());
+                    transitionPairs[0] = Pair.create((View) layoutManager.findViewByPosition(currentPosition).findViewById(R.id.videoCV), layoutManager.findViewByPosition(currentPosition).findViewById(R.id.videoCV).getTransitionName());
+
+                    ActivityOptionsCompat options = ActivityOptionsCompat.
+                            makeSceneTransitionAnimation(MovieDetailsActivity.this, transitionPairs);
+
+                    startActivity(intent, options.toBundle());
+                }
+            }
+        });
 
     }
 
     public void init(){
+
+
 
         postponeEnterTransition();
         //Changing the font throughout the activity
@@ -106,6 +148,7 @@ public class MovieDetailsActivity extends AppCompatActivity {
         descTV = findViewById(R.id.descriptionTV);
         backdropIV = findViewById(R.id.backdropIV);
         sessionLL = findViewById(R.id.sessionLL);
+        sessionTimeButton = findViewById(R.id.sessionTimeBTN);
         picturesRV = findViewById(R.id.picturesRV);
         ptMovieList = new ArrayList<>();
         ptAdapter = new PTAdapter(ptMovieList,MovieDetailsActivity.this);
@@ -120,8 +163,21 @@ public class MovieDetailsActivity extends AppCompatActivity {
             @Override
             public void run() {
                 supportStartPostponedEnterTransition();
+
             }
         });
+        MiddleItemFinder.MiddleItemCallback callback =
+                new MiddleItemFinder.MiddleItemCallback() {
+                    @Override
+                    public void scrollFinished(int middleElement) {
+                        // interaction with middle item
+                        currentPosition = middleElement;
+
+                    }
+                };
+        picturesRV.addOnScrollListener(
+                new MiddleItemFinder(getApplicationContext(), layoutManager,
+                        callback, RecyclerView.SCROLL_STATE_IDLE));
 
 
 

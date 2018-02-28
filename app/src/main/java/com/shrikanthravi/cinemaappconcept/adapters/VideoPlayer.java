@@ -49,6 +49,13 @@ public class VideoPlayer extends TextureView implements TextureView.SurfaceTextu
     SurfaceTexture s;
     private ScaleType mScaleType;
 
+    public int getCurrentProgress(){
+        if(mp!=null){
+            return mp.getCurrentPosition();
+        }
+        return  0;
+    }
+
     public interface IVideoPreparedListener {
 
         public void onVideoPrepared(PTMovie video);
@@ -65,6 +72,18 @@ public class VideoPlayer extends TextureView implements TextureView.SurfaceTextu
     }
 
     public void loadVideo(String localPath, PTMovie video) {
+
+        this.url = localPath;
+        this.video = video;
+        isLoaded = true;
+
+        if (this.isAvailable()) {
+            prepareVideo(getSurfaceTexture());
+        }
+
+        setSurfaceTextureListener(this);
+    }
+    public void loadVideo(String localPath) {
 
         this.url = localPath;
         this.video = video;
@@ -294,6 +313,12 @@ public class VideoPlayer extends TextureView implements TextureView.SurfaceTextu
         //txform.postRotate(10);          // just for fun
         txform.postTranslate(xoff, yoff);
         m_TextureView.setTransform(txform);
+    }
+
+    public void seekTo(int pos){
+        if(mp!=null){
+            mp.seekTo(pos);
+        }
     }
 
 }

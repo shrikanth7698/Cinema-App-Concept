@@ -8,6 +8,7 @@ import android.content.Context;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+
 public class MiddleItemFinder extends RecyclerView.OnScrollListener {
 
     private
