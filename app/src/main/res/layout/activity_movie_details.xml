@@ -39,6 +39,7 @@
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
             android:transitionName="descCard"
+            android:animateLayoutChanges="true"
             android:layout_below="@id/picturesRV"
             android:layout_marginBottom="10dp"
             app:cardElevation="15dp"
@@ -47,7 +48,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
+                android:id="@+id/detailsLL"
+                android:layout_marginTop="20dp"
                 android:animateLayoutChanges="true"
                 android:padding="10dp"
                 android:orientation="vertical">
@@ -148,6 +150,104 @@
                     android:textColor="@android:color/tab_indicator_text"/>
 
 
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:animateLayoutChanges="true"
+                android:id="@+id/timeSelectionLL"
+                android:visibility="gone"
+                android:padding="10dp"
+                android:orientation="vertical"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Session Date :"
+                    android:layout_margin="4dp"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="12"
+                        android:textSize="50sp"
+                        android:textColor="@color/colorPrimary"/>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_weight="1"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="8dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@android:color/black"
+                            android:textSize="20sp"
+                            android:text="Thu"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@android:color/tab_indicator_text"
+                            android:textSize="22sp"
+                            android:text="March"/>
+
+                    </LinearLayout>
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/down_icon"
+                        android:layout_gravity="center"
+                        android:tint="@color/colorPrimary"
+                        android:rotation="90"/>
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:tint="@color/colorPrimary"
+                        android:src="@drawable/down_icon"
+                        android:layout_gravity="center"
+                        android:rotation="270"/>
+
+                </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Session Time :"
+                    android:layout_margin="4dp"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp"/>
+
+
+                <android.support.v7.widget.RecyclerView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:requiresFadingEdge="horizontal"
+                    android:layout_gravity="center"
+                    android:id="@+id/movieTimeRV"
+                    android:layout_margin="4dp"
+                    android:padding="8dp"></android.support.v7.widget.RecyclerView>
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_margin="8dp"
+                    android:id="@+id/bookTicketsBTN"
+                    android:text="BOOK SEATS"
+                    android:textColor="@android:color/white"
+                    android:background="@drawable/rounded_corners"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"/>
             </LinearLayout>
 
         </android.support.v7.widget.CardView>

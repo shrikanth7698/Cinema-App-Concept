@@ -16,10 +16,13 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
         <activity android:name=".HomeActivity" />
         <activity android:name=".MovieDetailsActivity" />
-        <activity android:name=".MovieTimeTestActivity" />
+        <activity android:name=".MovieTimeTestActivity" >
+
+        </activity>
         <activity android:name=".SeatSelectionActivity"></activity>
     </application>
 

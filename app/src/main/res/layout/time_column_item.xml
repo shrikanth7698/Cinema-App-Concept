@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="-9dp"
+    android:layout_marginRight="-9dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textColor="@android:color/tab_indicator_text"
+        android:text="6:35 pm"
+        android:id="@+id/movieTimeTV"
+        android:layout_marginBottom="4dp"
+        android:layout_marginTop="4dp"/>
+
+    <ProgressBar
+            android:layout_width="80dp"
+            android:layout_height="60dp"
+            style="@android:style/Widget.ProgressBar.Horizontal"
+            android:id="@+id/seatsProgress"
+            android:rotation="270"
+            android:paddingLeft="5dp"
+            android:paddingRight="10dp"
+            android:progressTint="@android:color/tab_indicator_text"
+            android:background="@color/transparent_black_hex_1"
+            android:progressBackgroundTint="@android:color/transparent"
+            android:progress="10"
+            android:layout_marginTop="8dp"
+            android:layout_gravity="center"
+            />
+
+
+</LinearLayout>

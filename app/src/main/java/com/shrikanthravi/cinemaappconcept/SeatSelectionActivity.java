@@ -38,9 +38,9 @@ public class SeatSelectionActivity extends AppCompatActivity {
         getSupportActionBar().hide();
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_seat_selection);
-
+        pos = getIntent().getIntExtra("pos",0);
         init();
-         pos = getIntent().getIntExtra("pos",0);
+
         Picasso.with(getApplicationContext()).load(GlobalData.posters[pos]).into(backdropIV);
         Picasso.with(getApplicationContext()).load(GlobalData.posters[pos]).into(posterIV);
         if(getIntent().getStringExtra("pos1").equals("Picture")){
@@ -52,7 +52,7 @@ public class SeatSelectionActivity extends AppCompatActivity {
             videoLL.setVisibility(View.VISIBLE);
         }
         getWindow().setSharedElementEnterTransition(TransitionInflater.from(getApplicationContext()).inflateTransition(R.transition.detail_activity_enter_transition));
-        final Rotate3dAnimation rotate3dAnimation = new Rotate3dAnimation(0,-30,0,0,0,0);
+        final Rotate3dAnimation rotate3dAnimation = new Rotate3dAnimation(0,-20,0,0,0,0);
         rotate3dAnimation.setDuration(300);
         rotate3dAnimation.setFillAfter(true);
         rotate3dAnimation.setFillEnabled(true);
@@ -97,7 +97,7 @@ public class SeatSelectionActivity extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
 
-        final Rotate3dAnimation rotate3dAnimation = new Rotate3dAnimation(-30,0,0,0,0,0);
+        final Rotate3dAnimation rotate3dAnimation = new Rotate3dAnimation(-20,0,0,0,0,0);
         rotate3dAnimation.setDuration(300);
         rotate3dAnimation.setFillAfter(true);
         rotate3dAnimation.setFillEnabled(true);

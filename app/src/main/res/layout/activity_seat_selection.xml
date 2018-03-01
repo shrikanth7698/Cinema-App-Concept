@@ -16,6 +16,7 @@
         android:layout_height="match_parent"
         android:background="@color/transparent_white_percent_80"/>
 
+
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -25,13 +26,16 @@
         android:layout_centerHorizontal="true"
         android:id="@+id/moviePosterCard"
         android:layout_marginTop="40dp"
-        app:cardCornerRadius="8dp"
+        app:cardBackgroundColor="@android:color/black"
+        app:cardCornerRadius="15dp"
         app:cardElevation="20dp"
         >
+
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="220dp"
             android:scaleType="centerCrop"
+            android:paddingTop="4dp"
             android:transitionName="moviePoster"
             android:id="@+id/moviePosterIV"/>
         <LinearLayout
