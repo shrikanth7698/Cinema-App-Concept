@@ -9,6 +9,7 @@ import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.util.Pair;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.PagerSnapHelper;
 import android.support.v7.widget.RecyclerView;
@@ -32,6 +33,7 @@ import com.shrikanthravi.cinemaappconcept.data.PTMovie;
 import com.shrikanthravi.cinemaappconcept.utils.FontChanger;
 import com.shrikanthravi.cinemaappconcept.utils.LinePagerIndicatorDecoration;
 import com.shrikanthravi.cinemaappconcept.utils.MiddleItemFinder;
+import com.shrikanthravi.cinemaappconcept.utils.Rotate3dAnimation;
 import com.shrikanthravi.cinemaappconcept.utils.TransitionHelper;
 import com.squareup.picasso.Picasso;
 
@@ -59,6 +61,7 @@ public class MovieDetailsActivity extends AppCompatActivity {
     LinearLayout detailsLL,timeSelectionLL;
     boolean timeopen=false;
     Button bookTicketsBTN;
+    CardView descCV;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -133,7 +136,7 @@ public class MovieDetailsActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(MovieDetailsActivity.this,SeatSelectionActivity.class);
 
-                Pair<View, String>[] transitionPairs = new Pair[1];
+                Pair<View, String>[] transitionPairs = new Pair[2];
 
 
 
@@ -141,6 +144,7 @@ public class MovieDetailsActivity extends AppCompatActivity {
                 intent.putExtra("pos1",ptMovieList.get(currentPosition).getType());
                 if(ptMovieList.get(currentPosition).getType().equals("Picture")) {
                     transitionPairs[0] = Pair.create((View) layoutManager.findViewByPosition(currentPosition).findViewById(R.id.pictureCV), layoutManager.findViewByPosition(currentPosition).findViewById(R.id.pictureCV).getTransitionName());
+                    transitionPairs[1] = Pair.create((View) descCV, descCV.getTransitionName());
 
 
                     ActivityOptionsCompat options = ActivityOptionsCompat.
@@ -151,6 +155,7 @@ public class MovieDetailsActivity extends AppCompatActivity {
                 else{
                     intent.putExtra("currentPos",ptAdapter.getCurrentProgress());
                     transitionPairs[0] = Pair.create((View) layoutManager.findViewByPosition(currentPosition).findViewById(R.id.videoCV), layoutManager.findViewByPosition(currentPosition).findViewById(R.id.videoCV).getTransitionName());
+                    transitionPairs[1] = Pair.create((View) descCV, descCV.getTransitionName());
 
                     ActivityOptionsCompat options = ActivityOptionsCompat.
                             makeSceneTransitionAnimation(MovieDetailsActivity.this, transitionPairs);
@@ -167,6 +172,7 @@ public class MovieDetailsActivity extends AppCompatActivity {
 
 
         postponeEnterTransition();
+        descCV = findViewById(R.id.descCV);
         //Changing the font throughout the activity
         regular = Typeface.createFromAsset(getAssets(), "fonts/product_san_regular.ttf");
         bold = Typeface.createFromAsset(getAssets(),"fonts/product_sans_bold.ttf");
@@ -199,6 +205,7 @@ public class MovieDetailsActivity extends AppCompatActivity {
             }
         });
 
+
         MiddleItemFinder.MiddleItemCallback callback =
                 new MiddleItemFinder.MiddleItemCallback() {
                     @Override
@@ -211,6 +218,15 @@ public class MovieDetailsActivity extends AppCompatActivity {
         picturesRV.addOnScrollListener(
                 new MiddleItemFinder(getApplicationContext(), layoutManager,
                         callback, RecyclerView.SCROLL_STATE_IDLE));
+
+        picturesRV.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                System.out.println("Testing "+dx);
+
+            }
+        });
 
         movieTimeRV = findViewById(R.id.movieTimeRV);
         movieTimeList = new ArrayList<>();

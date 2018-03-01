@@ -8,20 +8,30 @@ import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.transition.TransitionInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.RotateAnimation;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
+import com.github.captain_miao.seatview.BaseSeatMo;
+import com.github.captain_miao.seatview.MovieSeatView;
+import com.github.captain_miao.seatview.SeatPresenter;
 import com.shrikanthravi.cinemaappconcept.adapters.VideoPlayer;
 import com.shrikanthravi.cinemaappconcept.data.GlobalData;
+import com.shrikanthravi.cinemaappconcept.model.SeatMo;
 import com.shrikanthravi.cinemaappconcept.utils.FontChanger;
 import com.shrikanthravi.cinemaappconcept.utils.Rotate3dAnimation;
 import com.squareup.picasso.Picasso;
 
-public class SeatSelectionActivity extends AppCompatActivity {
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
+public class SeatSelectionActivity extends AppCompatActivity{
 
     Typeface regular,bold;
     FontChanger regularFontChanger,boldFontChanger;
@@ -31,6 +41,15 @@ public class SeatSelectionActivity extends AppCompatActivity {
     LinearLayout videoLL;
     int pos;
     VideoPlayer videoPlayer;
+    private static final int MAX_SEATS = 5;
+
+    MovieSeatView mMovieSeatView;
+    private SeatMo[][] seatTable;
+
+    public List<SeatMo> selectedSeats;
+    private int maxRow = 10;
+    private int maxColumn = 6;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,7 +59,7 @@ public class SeatSelectionActivity extends AppCompatActivity {
         setContentView(R.layout.activity_seat_selection);
         pos = getIntent().getIntExtra("pos",0);
         init();
-
+        regularFontChanger.replaceFonts((ViewGroup)this.findViewById(android.R.id.content));
         Picasso.with(getApplicationContext()).load(GlobalData.posters[pos]).into(backdropIV);
         Picasso.with(getApplicationContext()).load(GlobalData.posters[pos]).into(posterIV);
         if(getIntent().getStringExtra("pos1").equals("Picture")){
@@ -93,7 +112,32 @@ public class SeatSelectionActivity extends AppCompatActivity {
 
     }
 
-    @Override
+    private void initSeatTable() {
+        seatTable = new SeatMo[maxRow][maxColumn];// mock data
+        for (int i = 0; i < maxRow; i++) {
+            for (int j = 0; j < maxColumn; j++) {
+                SeatMo seat = new SeatMo();
+                seat.row = i;
+                seat.column = j;
+                seat.rowName = String.valueOf((char)('A' + i));
+                seat.seatName = seat.rowName + " Row" + (j + 1) + " Seat";
+//                seat.status = 1;
+                seat.status = randInt(-2, 1);
+                seatTable[i][j] = seat.status == -2 ? null : seat;
+            }
+        }
+    }
+
+    public  int randInt(int min, int max) {
+
+        Random rand = new Random();
+
+
+        return rand.nextInt((max - min) + 1) + min;
+
+    }
+
+        @Override
     public void onBackPressed() {
         super.onBackPressed();
 
@@ -117,4 +161,5 @@ public class SeatSelectionActivity extends AppCompatActivity {
         super.onDestroy();
         videoLL.removeAllViews();
     }
+
 }
