@@ -45,6 +45,8 @@ public class Rotate3dAnimation extends Animation {
 
         final Matrix matrix = t.getMatrix();
 
+
+
         camera.save();
         camera.rotateX(xDegrees);
         camera.rotateY(yDegrees);
@@ -54,6 +56,7 @@ public class Rotate3dAnimation extends Animation {
 
         matrix.preTranslate(-this.width*2, -this.height/2);
         matrix.postTranslate(this.width*2, this.height/2);
+
     }
 
 }

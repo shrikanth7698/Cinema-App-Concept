@@ -22,7 +22,7 @@ import com.github.captain_miao.seatview.MovieSeatView;
 import com.github.captain_miao.seatview.SeatPresenter;
 import com.shrikanthravi.cinemaappconcept.adapters.VideoPlayer;
 import com.shrikanthravi.cinemaappconcept.data.GlobalData;
-import com.shrikanthravi.cinemaappconcept.model.SeatMo;
+
 import com.shrikanthravi.cinemaappconcept.utils.FontChanger;
 import com.shrikanthravi.cinemaappconcept.utils.Rotate3dAnimation;
 import com.squareup.picasso.Picasso;
@@ -37,18 +37,12 @@ public class SeatSelectionActivity extends AppCompatActivity{
     FontChanger regularFontChanger,boldFontChanger;
     ImageView backdropIV;
     ImageView posterIV;
-    CardView moviePosterCV;
+    LinearLayout moviePosterCV;
     LinearLayout videoLL;
     int pos;
     VideoPlayer videoPlayer;
     private static final int MAX_SEATS = 5;
 
-    MovieSeatView mMovieSeatView;
-    private SeatMo[][] seatTable;
-
-    public List<SeatMo> selectedSeats;
-    private int maxRow = 10;
-    private int maxColumn = 6;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,6 +94,7 @@ public class SeatSelectionActivity extends AppCompatActivity{
         backdropIV = findViewById(R.id.backdropIV);
         posterIV = findViewById(R.id.moviePosterIV);
         moviePosterCV = findViewById(R.id.moviePosterCard);
+
         videoLL = findViewById(R.id.videoLL);
         videoPlayer = new VideoPlayer(SeatSelectionActivity.this);
 
@@ -110,23 +105,10 @@ public class SeatSelectionActivity extends AppCompatActivity{
         videoPlayer.loadVideo(GlobalData.videos[pos]);
 
 
+
+
     }
 
-    private void initSeatTable() {
-        seatTable = new SeatMo[maxRow][maxColumn];// mock data
-        for (int i = 0; i < maxRow; i++) {
-            for (int j = 0; j < maxColumn; j++) {
-                SeatMo seat = new SeatMo();
-                seat.row = i;
-                seat.column = j;
-                seat.rowName = String.valueOf((char)('A' + i));
-                seat.seatName = seat.rowName + " Row" + (j + 1) + " Seat";
-//                seat.status = 1;
-                seat.status = randInt(-2, 1);
-                seatTable[i][j] = seat.status == -2 ? null : seat;
-            }
-        }
-    }
 
     public  int randInt(int min, int max) {
 

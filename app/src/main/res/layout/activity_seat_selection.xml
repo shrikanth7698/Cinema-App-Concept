@@ -17,35 +17,52 @@
         android:background="@color/transparent_white_percent_95"/>
 
 
-    <android.support.v7.widget.CardView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="40dp"
-        android:layout_marginRight="40dp"
-        android:transitionName="movieCard"
-        android:layout_centerHorizontal="true"
         android:id="@+id/moviePosterCard"
-        android:layout_marginTop="40dp"
-        app:cardBackgroundColor="@android:color/black"
-        app:cardCornerRadius="15dp"
-        app:cardElevation="20dp"
-        >
-
-        <ImageView
+        android:transitionName="movieCard"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="30dp"
+        android:orientation="vertical">
+        <android.support.v7.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="220dp"
-            android:scaleType="centerCrop"
-            android:paddingTop="4dp"
-            android:transitionName="moviePoster"
-            android:id="@+id/moviePosterIV"/>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="220dp"
-            android:orientation="horizontal"
-            android:visibility="gone"
-            android:id="@+id/videoLL"/>
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_centerHorizontal="true"
+            app:cardBackgroundColor="@android:color/black"
+            app:cardCornerRadius="15dp"
+            app:cardElevation="20dp"
+            >
 
-    </android.support.v7.widget.CardView>
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="220dp"
+                android:scaleType="centerCrop"
+                android:paddingTop="4dp"
+                android:transitionName="moviePoster"
+                android:id="@+id/moviePosterIV"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="220dp"
+                android:orientation="horizontal"
+                android:visibility="gone"
+                android:id="@+id/videoLL"/>
+
+        </android.support.v7.widget.CardView>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="@drawable/gradient"
+
+            android:rotationX="30"/>
+
+
+
+    </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -54,7 +71,7 @@
 
         android:layout_marginRight="20dp"
         android:layout_below="@id/moviePosterCard"
-        android:layout_marginTop="-20dp"
+        android:layout_marginTop="-100dp"
         android:transitionName="descCard">
         <LinearLayout
             android:layout_width="match_parent"
